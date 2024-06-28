@@ -1,27 +1,31 @@
 {% extends "base.html" %}
 {% block title %}Register{% endblock %}
 {% block content %}
-<h2>Register</h2>
-<form method="POST" action="{{ url_for('register') }}">
-    {{ form.hidden_tag() }}
-    <div>
-        {{ form.username.label }} {{ form.username }}
-    </div>
-    <div>
-        {{ form.email.label }} {{ form.email }}
-    </div>
-    <div>
-        {{ form.password.label }} {{ form.password }}
-    </div>
-    
-    <div>
-        {{ form.confirm_password.label }} {{ form.confirm_password }}
-    </div>
-    <div>
-        {{ form.monthly_income.label }} {{ form.monthly_income }}
-    </div>
-    <div>
-        {{ form.submit }}
-    </div>
-</form>
+<div class="container">
+    <h2>Register</h2>
+    <form method="POST" action="{{ url_for('register') }}" class="mt-4">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control", placeholder="Enter your username") }}
+        </div>
+        <div class="form-group">
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control", placeholder="Enter your email") }}
+        </div>
+        <div class="form-group">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control", placeholder="Enter your password") }}
+        </div>
+        <div class="form-group">
+            {{ form.confirm_password.label(class="form-label") }}
+            {{ form.confirm_password(class="form-control", placeholder="Confirm your password") }}
+        </div>
+        <div class="form-group">
+            {{ form.monthly_income.label(class="form-label") }}
+            {{ form.monthly_income(class="form-control", placeholder="Enter your monthly income") }}
+        </div>
+        <button type="submit" class="btn btn-primary my-3">Register</button>
+    </form>
+</div>
 {% endblock %}

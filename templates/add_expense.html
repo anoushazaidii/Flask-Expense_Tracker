@@ -3,7 +3,7 @@
   Add Expense
 {% endblock %}
 {% block content %}
-  <div class="container">
+  <div class="container my-3">
     <h2>Add Expense</h2>
     <form method="POST" action="">
       {{ form.hidden_tag() }}
@@ -20,7 +20,7 @@
         {{ form.category(class="form-control") }}
       </div>
       <div class="form-group">
-        {{ form.submit(class="btn btn-primary") }}
+        {{ form.submit(class="btn btn-primary my-3") }}
       </div>
     </form>
   </div>

@@ -3,11 +3,43 @@
   Reports
 {% endblock %}
 {% block content %}
-  <div class="container">
-    <h2>Financial Reports</h2>
-    <p>Total Expenses: ${{ total_expenses }}</p>
-    <p>Total Incomes: ${{ total_incomes }}</p>
-    <p>Monthly Income: ${{ monthly_income }}</p>
-    <p>Budget: ${{ budget }}</p>
-  </div>
+<div class="container">
+    <h2 class="mt-4 mb-4">Financial Reports</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Expenses</h5>
+                    <p class="card-text">$ {{ total_expenses }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Incomes</h5>
+                    <p class="card-text">$ {{ total_incomes }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Monthly Income</h5>
+                    <p class="card-text">$ {{ monthly_income }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Budget</h5>
+                    <p class="card-text">$ {{ budget }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

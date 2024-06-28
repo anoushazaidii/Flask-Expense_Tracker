@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}
-  Add Income
+  Add Additional Income
 {% endblock %}
 {% block content %}
-  <div class="container">
-    <h2>Add Income</h2>
+  <div class="container my-3">
+    <h2>Add Additional Income</h2>
     <form method="POST">
       {{ form.hidden_tag() }}
       <div class="form-group">
@@ -19,7 +19,7 @@
         {{ form.source.label(class="form-label") }}
         {{ form.source(class="form-control") }}
       </div>
-      <button type="submit" class="btn btn-primary">Add Income</button>
+      <button type="submit" class="btn btn-primary my-3">Add Income</button>
     </form>
   </div>
 {% endblock %}
