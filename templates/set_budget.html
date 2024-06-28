@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}
+  Set Budget
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <h2>Set Budget</h2>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        {{ form.budget.label(class="form-label") }}
+        {{ form.budget(class="form-control") }}
+      </div>
+      <button type="submit" class="btn btn-primary">Set Budget</button>
+    </form>
+  </div>
+{% endblock %}

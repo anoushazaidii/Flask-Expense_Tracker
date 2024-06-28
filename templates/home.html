@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}
+  Home
+{% endblock %}
+{% block content %}
+  {% if current_user.is_authenticated %}  <h1>Welcome! {{current_user.username}}</h1>
+  <div class="col text-end">
+    <p>Monthly Income: ${{ current_user.monthly_income }}</p>
+  </div>
+    {% if no_expenses %}
+      <p>No expenses data available. Please <a href="{{ url_for('add_expense') }}">add your expenses</a>.</p>
+    {% else %}
+      <div class="container">
+        <h2>Monthly Summary</h2>
+        <p>Total Expenses for {{ current_month }}: ${{ monthly_expenses }}</p>
+
+        <h3>Expenses by Category for {{ current_month }}</h3>
+        <ul>
+          {% for category, amount in monthly_categories.items() %}
+            <li>{{ category }}: ${{ amount }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="container">
+        <h3>Top Expense Categories</h3>
+        <ul>
+          {% for category, amount in top_categories.items() %}
+            <li>{{ category }}: ${{ amount }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="container">
+        <h3>Recent Transactions</h3>
+        <ul>
+          {% for expense in recent_expenses %}
+            <li>{{ expense.date }}: ${{ expense.amount }} - {{ expense.category }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="container">
+        <h3>Expenses Graph</h3>
+        <div id="expenses-graph"></div>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script>
+        var data = [{
+            values: [{{ monthly_categories.values()|join(', ')|safe }}],
+            labels: [{{ monthly_categories.keys()|map('tojson')|join(', ')|safe }}],
+            type: 'pie'
+        }];
+        Plotly.newPlot('expenses-graph', data);
+        </script>
+      </div>
+    {% endif %}
+  {% else %}
+    <p>Please log in to see your finance data.</p>
+  {% endif %}
+{% endblock %}
